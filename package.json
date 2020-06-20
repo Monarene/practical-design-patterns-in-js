@@ -1,0 +1,17 @@
+{
+  "name": "parctical_designs_in_js",
+  "version": "1.0.0",
+  "description": "This package details all that I learnt in the Practical designs course",
+  "main": "task.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "paractical",
+    "patterns",
+    "javascript"
+  ],
+  "author": "Michael Mekuleyi",
+  "license": "ISC"
+}
