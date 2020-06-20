@@ -14,10 +14,11 @@
 // console.log(task.toString());
 
 // This name and all that stuff
+// var Repo = require("./taskRepositpry");
+
 "use strict";
-var Repo = require("./taskRepositpry");
-var Task = function (data) {
-  this.name = data.name;
+var Task = function (name) {
+  this.name = name;
   this.completed = false;
 };
 
@@ -28,7 +29,33 @@ Task.prototype.complete = function () {
 
 Task.prototype.save = function () {
   console.log("Saving Task: " + this.name);
-  Repo.save(this);
+  // Repo.save(this);
 };
 
+var myTask = new Task("LegaCY Task");
+myTask.complete();
+myTask.save();
+
+var urgentTask = function (name, priority) {
+  Task.call(this, name);
+};
+
+// sub classing
+urgentTask.prototype = Object.create(Task.prototype);
+
+// After all the subclassing I can actually add more custom functions
+urgentTask.prototype.notify = function () {
+  console.log("notifying important people");
+};
+
+urgentTask.prototype.save = function () {
+  this.notify();
+  console.log("Do special stuff before saving ");
+  Task.prototype.save.call(this);
+};
+
+var ut = new urgentTask("This is urgent ", 1);
+ut.complete();
+ut.save();
+console.log(ut);
 module.exports = Task;
